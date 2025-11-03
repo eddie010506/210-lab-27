@@ -2,6 +2,8 @@
 #include <map>
 #include <vector>
 #include <tuple>
+#include <string>
+#include <limits>
 using namespace std;
 // new code to print after each operation
 void printAllVillagers(const map<string, tuple<int, string, string>>& villager) {
@@ -29,17 +31,52 @@ int main() {
 
     int choice = 0;// making menu
     while (choice != 4) {
-        cout << "1. Increase Friendship" << endl;
-        cout << "2. Decrease Friendship" << endl;
-        cout << "3. Search for Villager" << endl;
-        cout << "4. Exit" << endl;
+        cout << "1. Add Villager" << endl;
+        cout << "2. Delete Villager" << endl;
+        cout << "3. Increase Friendship" << endl;
+        cout << "4. Decrease Friendship" << endl;
+        cout << "5. Search for Villager" << endl;
+        cout << "6. Exit" << endl;
         cout << "Enter choice: ";
         cin >> choice;
 
         string name;
         map<string, tuple<int, string, string>>::iterator it;
         switch (choice) {
-            case 1: {
+            case 1: {// adding villager
+                string species, catchphrase;
+                int level;
+
+                cout << "Villager name: ";
+                cin >> name;
+                cout << "Friendship level: ";
+                cin >> level;
+                cout << "Species: ";
+                cin >> species;
+                cout << "Catchphrase: ";
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');// to take away the leftover line
+                getline(cin, catchphrase);
+
+                villager[name] = make_tuple(level, species, catchphrase);
+                cout << name << " added." << endl;
+                
+                printAllVillagers(villager);
+                break;
+            }
+
+            case 2: {//delete villager
+                cout << "Enter villager name to delete: ";
+                cin >> name;
+
+                if (villager.erase(name) == 1) { 
+                    cout << name << " deleted." << endl;
+                } else {
+                    cout << "Error: " << name << " not found." << endl;
+                }
+                printAllVillagers(villager);
+                break;
+            }
+            case 3: {
                 cout << "Enter villager name: ";
                 cin >> name;
                 it = villager.find(name);
@@ -57,7 +94,7 @@ int main() {
 
             
 
-            case 2: { //same code but check if friend ship bigger than 0
+            case 4: { //same code but check if friend ship bigger than 0
                 cout << "Enter villager name: ";
                 cin >> name;
                 it = villager.find(name);
@@ -77,7 +114,7 @@ int main() {
             printAllVillagers(villager); 
             break;
 
-            case 3: {
+            case 5: {
                 cout << "Enter villager name: ";
                 cin >> name;
                 it = villager.find(name);
@@ -92,7 +129,7 @@ int main() {
                 break;
             } 
 
-            case 4: // exit
+            case 6: // exit
             {
                 cout << "Exiting." << endl;
                 break;
