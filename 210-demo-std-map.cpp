@@ -3,7 +3,17 @@
 #include <vector>
 #include <tuple>
 using namespace std;
-
+// new code to print after each operation
+void printAllVillagers(const map<string, tuple<int, string, string>>& villager) {
+    cout << "\nVillager details:" << endl;
+    for (auto const& pair : villager) {
+        cout << pair.first << " [" << get<0>(pair.second)
+             << ", " << get<1>(pair.second)
+             << ", " << get<2>(pair.second)
+             << "]" << endl;
+    }
+    cout << endl;
+}
 int main() {
     // declarations
     map<string, tuple<int, string, string>> villager;
@@ -46,5 +56,23 @@ int main() {
     villager.clear();
     cout << "Size after clear: " << villager.size() << endl;
 
+    int choice = 0;// making menu
+    while (choice != 4) {
+        cout << "1. Increase Friendship" << endl;
+        cout << "2. Decrease Friendship" << endl;
+        cout << "3. Search for Villager" << endl;
+        cout << "4. Exit" << endl;
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        string name;
+        auto it;
+        switch (choice){
+            case 1:
+            
+
+        }
+        
+    }
     return 0;
 }
