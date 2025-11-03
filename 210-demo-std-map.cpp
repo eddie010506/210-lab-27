@@ -68,8 +68,43 @@ int main() {
         string name;
         auto it;
         switch (choice){
-            case 1:
-            
+            case 1: {
+                cin >> name;
+                it = villager.find(name);
+                if (it == villager.end()) {
+                    cout << "Error: " << name << " not found." << endl;
+                } 
+                else if (choice == 1) { //increasing
+                    get<0>(it->second)++; 
+                }
+            }
+            printAllVillagers(villager); 
+            break;
+                
+
+
+            }
+
+            case 2: { //same code but check if friend ship bigger than 0
+                cin >> name;
+                it = villager.find(name);
+                if (it == villager.end()) {
+                    cout << "Error: " << name << " not found." << endl;
+                } 
+                else if (choice == 2) { //decreasing
+                    if (get<0>(it->second) > 0) { 
+                            get<0>(it->second)--; 
+                            cout << name << "'s friendship decreased." << endl;
+                    } 
+                    else {
+                        cout << name << "'s friendship is already 0." << endl;
+                    }
+                }
+            }
+            printAllVillagers(villager); 
+            break;
+                
+
 
         }
         
