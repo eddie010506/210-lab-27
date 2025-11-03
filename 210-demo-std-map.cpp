@@ -40,6 +40,7 @@ int main() {
         map<string, tuple<int, string, string>>::iterator it;
         switch (choice) {
             case 1: {
+                cout << "Enter villager name: ";
                 cin >> name;
                 it = villager.find(name);
                 if (it == villager.end()) {
@@ -57,6 +58,7 @@ int main() {
             
 
             case 2: { //same code but check if friend ship bigger than 0
+                cout << "Enter villager name: ";
                 cin >> name;
                 it = villager.find(name);
                 if (it == villager.end()) {
@@ -76,6 +78,7 @@ int main() {
             break;
 
             case 3: {
+                cout << "Enter villager name: ";
                 cin >> name;
                 it = villager.find(name);
 
